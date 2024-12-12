@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script type="text/javascript">
+        // Validate Name function
+        function validateName() {
+            var a = document.f1.t1.value;
+            if (a.length >= 6) {
+                for (var i = 0; i < a.length; i++) {
+                    var ch = a.charAt(i);
+                    // Check if the character is not a digit
+                    if (ch >= '0' && ch <= '9') {
+                        alert("Enter alphabets only");
+                        return false;
+                    }
+                }
+            } else {
+                alert("Name requires minimum six characters");
+                return false;
+            }
+            return true;
+        }
+
+        // Validate Password function
+        function validatePassword() {
+            var pass = document.f1.p1.value;
+            if (pass.indexOf(" ") != -1) {
+                alert("Spaces are not allowed in password");
+                return false;
+            }
+            if (pass.length < 6) {
+                alert("Password must be minimum 6 characters in length");
+                return false;
+            }
+            return true;
+        }
+
+        // Validate Email function
+        function validateEmail() {
+            var email = document.f1.t3.value;
+            if (email.indexOf(" ") != -1) {
+                alert("Spaces are not allowed in email");
+                return false;
+            }
+            if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+                alert("Invalid email ID");
+                return false;
+            }
+            return true;
+        }
+
+        // Validate Phone Number function
+        function validatePhone() {
+            var phone = document.f1.t2.value;
+            if (phone.indexOf(" ") != -1) {
+                alert("Spaces are not allowed in phone number");
+                return false;
+            }
+            if (phone.length < 10) {
+                alert("Phone number must be at least 10 digits");
+                return false;
+            }
+            if (isNaN(phone)) {
+                alert("Enter digits only for phone number");
+                return false;
+            }
+            return true;
+        }
+
+        // Combined validation function
+        function validateForm() {
+            if (validateName() && validatePassword() && validateEmail() && validatePhone()) {
+                alert("Form submitted successfully!");
+                return true; // Form can be submitted
+            } else {
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</head>
+<body bgcolor="pink">
+    <h1><center>Registration Form</center></h1>
+    <form name="f1" onsubmit="return validateForm()">
+        Name: <input type="text" name="t1" size="20" maxlength="40"><br>
+        Password: <input type="password" name="p1" size="20" maxlength="40"><br>
+        Email ID: <input type="text" name="t3"><br>
+        Phone Number: <input type="text" name="t2"><br>
+        Sex:
+        <input type="radio" name="gen" value="male" checked> Male<br>
+        <input type="radio" name="gen" value="female"> Female<br><br>
+
+        Date of Birth:
+        <select name="a">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <select name="b">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <select name="c">
+            <option value="1960" selected>1960</option>
+            <option value="1961">1961</option>
+            <option value="1962">1962</option>
+            <option value="1963">1963</option>
+            <option value="1964">1964</option>
+        </select>
+        <br><br>
+
+        Address: <textarea name="address" rows="5" cols="25"></textarea><br><br>
+
+Languages Known:
+        <input type="checkbox" name="ch" value="telugu"> Telugu<br>
+        <input type="checkbox" name="ch" value="hindi"> Hindi<br>
+        <input type="checkbox" name="ch" value="tamil"> Tamil<br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
